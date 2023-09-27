@@ -17,7 +17,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 'latest',
+    ecmaVersion: '9',
     sourceType: 'module',
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
