@@ -1,43 +1,39 @@
 import React from 'react';
-import { urlObject } from './server';
 
-export class SearchBar extends React.Component<unknown, { searchDone: boolean }> {
+interface IProps {
+  value: string;
+  onValueChange: () => void;
+  onButtonClick: () => void;
+}
+
+export class SearchBar extends React.Component<IProps, unknown> {
   constructor(props) {
     super(props);
-    this.state = {
-      searchDone: false,
-    };
-    this.handleSearch = this.handleSearch.bind(this);
-    this.search = this.search.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleSearch() {
-    const input = document.getElementById('search-input') as HTMLInputElement;
-    const name = input.value.trim().toLowerCase();
-    if (!name.length) return;
-    this.search(name);
-    input.value = '';
+  handleChange() {
+    this.props.onValueChange();
   }
 
-  async search(name: string) {
-    const url = urlObject.url;
-    try {
-      const response = await fetch(`${url}/${name}`);
-      if (!response.ok) {
-        throw new Error(`Query execution error : ${response.status}`);
-      }
-      const data = await response.json();
-      console.log(data);
-    } catch (e) {
-      console.error(`Error: ${e}`);
-    }
+  handleClick() {
+    this.props.onButtonClick();
   }
 
   render() {
+    const value = this.props.value;
+
     return (
       <div className="wrapper">
-        <input type="text" id="search-input" className="input" />
-        <button id="search-button" className="button" onClick={this.handleSearch}>
+        <input
+          type="text"
+          id="search-input"
+          className="input"
+          value={value}
+          onChange={this.handleChange}
+        />
+        <button id="search-button" className="button" onClick={this.handleClick}>
           search
         </button>
       </div>

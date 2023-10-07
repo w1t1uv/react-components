@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import { PokemonSearch } from './PokemonSearch';
 
 function App() {
   return (
     <div className="container">
-      <SearchBar />
+      <PokemonSearch />
     </div>
   );
 }
