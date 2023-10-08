@@ -58,9 +58,8 @@ body {
   cursor: pointer;
   background: #929292;
   outline: none;
-  border: #5e5e5e solid;
   border-radius: 2px;
-  border-width: 1px;
+  border: 1px solid #5e5e5e;
   color: #d5d5d5;
   font-size: 23px;
 }
@@ -70,3 +69,13 @@ body {
 }
 
 /*button styles end*/
+
+/*output section styles start*/
+
+.property {
+  color: #929292;
+  font-weight: 900;
+  font-size: 35px;
+}
+
+/*output section styles end*/

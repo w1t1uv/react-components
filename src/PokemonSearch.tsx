@@ -1,9 +1,18 @@
 import React from 'react';
 import { urlObject } from './server';
 import SearchBar from './SearchBar';
-// import { OutputSection } from './OutputSection';
+import { Pokemon } from './Pokemon';
 
-export class PokemonSearch extends React.Component<unknown, { value: string }> {
+interface IState {
+  value: string;
+  name: string;
+  height: number;
+  isDefault: boolean;
+  order: number;
+  weight: number;
+}
+
+export class PokemonSearch extends React.Component<unknown, IState> {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -11,6 +20,11 @@ export class PokemonSearch extends React.Component<unknown, { value: string }> {
     this.search = this.search.bind(this);
     this.state = {
       value: '',
+      name: '',
+      height: 0,
+      isDefault: false,
+      order: 0,
+      weight: 0,
     };
   }
 
@@ -19,6 +33,11 @@ export class PokemonSearch extends React.Component<unknown, { value: string }> {
     const value = input.value;
     this.setState({
       value: value,
+      name: '',
+      height: 0,
+      isDefault: false,
+      order: 0,
+      weight: 0,
     });
   }
 
@@ -38,7 +57,14 @@ export class PokemonSearch extends React.Component<unknown, { value: string }> {
         throw new Error(`Query execution error : ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
+      this.setState({
+        value: data.name,
+        name: data.name,
+        height: data.height,
+        isDefault: data.isDefault,
+        order: data.order,
+        weight: data.weight,
+      });
     } catch (e) {
       console.error(`Error: ${e}`);
     }
@@ -54,7 +80,13 @@ export class PokemonSearch extends React.Component<unknown, { value: string }> {
           onValueChange={this.handleChange}
           onButtonClick={this.handleClick}
         />
-        {/*<OutputSection />*/}
+        <Pokemon
+          name={this.state.name}
+          height={this.state.height}
+          isDefault={this.state.isDefault ? 'Yes' : 'No'}
+          order={this.state.order}
+          weight={this.state.weight}
+        />
       </div>
     );
   }
