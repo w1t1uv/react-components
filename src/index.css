@@ -72,6 +72,13 @@ body {
 
 /*output section styles start*/
 
+.loading {
+  color: #929292;
+  text-align: center;
+  font-weight: 900;
+  font-size: 40px;
+}
+
 .property {
   color: #929292;
   font-weight: 900;

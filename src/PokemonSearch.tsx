@@ -10,6 +10,8 @@ interface IState {
   isDefault: boolean;
   order: number;
   weight: number;
+  searchDone: boolean;
+  loading: boolean;
 }
 
 export class PokemonSearch extends React.Component<unknown, IState> {
@@ -25,6 +27,8 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       isDefault: false,
       order: 0,
       weight: 0,
+      searchDone: false,
+      loading: false,
     };
   }
 
@@ -50,6 +54,8 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       isDefault: false,
       order: 0,
       weight: 0,
+      searchDone: false,
+      loading: false,
     });
   }
 
@@ -61,6 +67,16 @@ export class PokemonSearch extends React.Component<unknown, IState> {
   }
 
   async search(name: string) {
+    this.setState({
+      value: '',
+      name: '',
+      height: 0,
+      isDefault: false,
+      order: 0,
+      weight: 0,
+      searchDone: false,
+      loading: true,
+    });
     const url = urlObject.url;
     try {
       const response = await fetch(`${url}/${name}`);
@@ -75,6 +91,8 @@ export class PokemonSearch extends React.Component<unknown, IState> {
         isDefault: data.isDefault,
         order: data.order,
         weight: data.weight,
+        searchDone: true,
+        loading: false,
       });
       localStorage.setItem('state', JSON.stringify(data));
     } catch (e) {
@@ -84,6 +102,8 @@ export class PokemonSearch extends React.Component<unknown, IState> {
 
   render() {
     const value = this.state.value;
+    const searchDone = this.state.searchDone;
+    const loading = this.state.loading;
 
     return (
       <div>
@@ -92,13 +112,16 @@ export class PokemonSearch extends React.Component<unknown, IState> {
           onValueChange={this.handleChange}
           onButtonClick={this.handleClick}
         />
-        <Pokemon
-          name={this.state.name}
-          height={this.state.height}
-          isDefault={this.state.isDefault ? 'Yes' : 'No'}
-          order={this.state.order}
-          weight={this.state.weight}
-        />
+        {loading && <p className="loading">Loading</p>}
+        {searchDone && (
+          <Pokemon
+            name={this.state.name}
+            height={this.state.height}
+            isDefault={this.state.isDefault ? 'Yes' : 'No'}
+            order={this.state.order}
+            weight={this.state.weight}
+          />
+        )}
       </div>
     );
   }
