@@ -28,6 +28,18 @@ export class PokemonSearch extends React.Component<unknown, IState> {
     };
   }
 
+  componentDidMount() {
+    const storedQuery = localStorage.getItem('query');
+    const storedState = localStorage.getItem('state');
+    if (storedQuery && storedState) {
+      const state = JSON.parse(storedState);
+      this.setState({
+        value: storedQuery,
+        ...state,
+      });
+    }
+  }
+
   handleChange() {
     const input = document.getElementById('search-input') as HTMLInputElement;
     const value = input.value;
@@ -42,11 +54,10 @@ export class PokemonSearch extends React.Component<unknown, IState> {
   }
 
   handleClick() {
-    const input = document.getElementById('search-input') as HTMLInputElement;
     const value = this.state.value.trim().toLowerCase();
     if (!value.length) return;
+    localStorage.setItem('query', value);
     this.search(value);
-    input.value = '';
   }
 
   async search(name: string) {
@@ -65,6 +76,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
         order: data.order,
         weight: data.weight,
       });
+      localStorage.setItem('state', JSON.stringify(data));
     } catch (e) {
       console.error(`Error: ${e}`);
     }
