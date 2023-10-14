@@ -2,6 +2,7 @@ import React from 'react';
 import { urlObject } from './server';
 import SearchBar from './SearchBar';
 import { Pokemon } from './Pokemon';
+import { AllPokemon } from './AllPokemon';
 
 interface IState {
   value: string;
@@ -122,6 +123,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
             weight={this.state.weight}
           />
         )}
+        {!value && <AllPokemon />}
       </div>
     );
   }
