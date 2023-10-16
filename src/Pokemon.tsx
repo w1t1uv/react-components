@@ -15,12 +15,12 @@ export class Pokemon extends React.Component<IProps, unknown> {
 
   render() {
     return (
-      <div className="wrapper">
-        <p className="property">Name : {this.props.name}</p>
-        <p className="property">Height : {this.props.height}</p>
-        <p className="property">Is Default : {this.props.isDefault}</p>
-        <p className="property">Order : {this.props.order}</p>
-        <p className="property">Weight : {this.props.weight}</p>
+      <div className="wrapper pokemon-wrapper">
+        <p className="property property-name">Name : {this.props.name}</p>
+        <p className="property property-height">Height : {this.props.height}</p>
+        <p className="property property-isDefault">Is Default : {this.props.isDefault}</p>
+        <p className="property property-order">Order : {this.props.order}</p>
+        <p className="property property-weight">Weight : {this.props.weight}</p>
       </div>
     );
   }

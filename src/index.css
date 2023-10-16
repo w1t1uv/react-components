@@ -79,10 +79,29 @@ body {
   font-size: 40px;
 }
 
+.pokemon-wrapper {
+  background: #e0e0e0;
+  width: 50%;
+  margin: 20px auto;
+  padding: 7px;
+  border: 3px solid #929292;
+  border-radius: 10px;
+}
+
 .property {
   color: #929292;
   font-weight: 900;
+}
+
+.property-name {
   font-size: 35px;
+}
+
+.property-height,
+.property-isDefault,
+.property-order,
+.property-weight {
+  font-size: 25px;
 }
 
 /*output section styles end*/

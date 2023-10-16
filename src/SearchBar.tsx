@@ -25,7 +25,7 @@ export class SearchBar extends React.Component<IProps, unknown> {
     const value = this.props.value;
 
     return (
-      <div className="wrapper">
+      <div className="wrapper search-wrapper">
         <input
           type="text"
           id="search-input"
