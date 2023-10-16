@@ -59,6 +59,9 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       searchDone: false,
       loading: false,
     });
+    if (!value) {
+      localStorage.setItem('query', '');
+    }
   }
 
   handleClick() {
