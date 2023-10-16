@@ -40,6 +40,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       const state = JSON.parse(storedState);
       this.setState({
         value: storedQuery,
+        searchDone: true,
         ...state,
       });
     }
@@ -68,16 +69,10 @@ export class PokemonSearch extends React.Component<unknown, IState> {
   }
 
   async search(name: string) {
-    this.setState({
-      value: '',
-      name: '',
-      height: 0,
-      isDefault: false,
-      order: 0,
-      weight: 0,
-      searchDone: false,
+    this.setState((prevState) => ({
+      ...prevState,
       loading: true,
-    });
+    }));
     const url = urlObject.url;
     try {
       const response = await fetch(`${url}/${name}`);
@@ -102,9 +97,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
   }
 
   render() {
-    const value = this.state.value;
-    const searchDone = this.state.searchDone;
-    const loading = this.state.loading;
+    const { value, searchDone, loading } = this.state;
 
     return (
       <div>
