@@ -39,6 +39,15 @@ body {
 
 /*wrapper styles end*/
 
+.hint {
+  font-size: 15px;
+  color: #929292;
+  font-weight: 900;
+  width: 250px;
+  text-align: center;
+  margin: 0 auto 10px;
+}
+
 /*input styles start*/
 
 .input {
