@@ -26,6 +26,7 @@ export class SearchBar extends React.Component<IProps, unknown> {
 
     return (
       <div className="wrapper search-wrapper">
+        <div className="hint">For example, you can search : pikachu, wartortle, metapod, etc.</div>
         <input
           type="text"
           id="search-input"
