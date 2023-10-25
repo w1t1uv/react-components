@@ -9,7 +9,7 @@ interface IProps {
 }
 
 export class Pokemon extends React.Component<IProps, unknown> {
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
   }
 

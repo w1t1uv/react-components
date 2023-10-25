@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export class SearchBar extends React.Component<IProps, unknown> {
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);

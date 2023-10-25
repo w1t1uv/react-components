@@ -16,7 +16,7 @@ interface IState {
 }
 
 export class PokemonSearch extends React.Component<unknown, IState> {
-  constructor(props) {
+  constructor(props: unknown) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);

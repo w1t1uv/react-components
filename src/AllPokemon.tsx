@@ -15,8 +15,13 @@ interface IState {
   isLoaded: boolean;
 }
 
+interface responsePokemon {
+  name: string;
+  url: string;
+}
+
 export class AllPokemon extends React.Component<unknown, IState> {
-  constructor(props) {
+  constructor(props: unknown) {
     super(props);
     this.state = {
       allPokemon: [],
@@ -36,7 +41,7 @@ export class AllPokemon extends React.Component<unknown, IState> {
       const { results } = data;
 
       const allPokemonData = await Promise.all(
-        results.map(async (pokemon) => {
+        results.map(async (pokemon: responsePokemon) => {
           const pokemonResponse = await fetch(pokemon.url);
           if (!pokemonResponse.ok) {
             throw new Error(`Query execution error : ${pokemonResponse.status}`);
