@@ -81,7 +81,8 @@ body {
 
 /*output section styles start*/
 
-.loading {
+.loading,
+.error {
   color: #929292;
   text-align: center;
   font-weight: 900;
