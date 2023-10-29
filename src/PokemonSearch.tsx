@@ -3,6 +3,7 @@ import { urlObject } from './server';
 import SearchBar from './SearchBar';
 import { Pokemon } from './Pokemon';
 import { AllPokemon } from './AllPokemon';
+import ErrorButton from './ErrorButton';
 
 interface IState {
   value: string;
@@ -117,6 +118,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
           onValueChange={this.handleChange}
           onButtonClick={this.handleClick}
         />
+        <ErrorButton />
         {queryError && <p className="error">There is no such thing as a Pokemon :/</p>}
         {loading && !queryError && <p className="loading">Loading</p>}
         {searchDone && !queryError && (

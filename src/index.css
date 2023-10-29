@@ -74,7 +74,7 @@ body {
 }
 
 .button:hover {
-  background: #717171;
+  background: #5e5e5e;
 }
 
 /*button styles end*/
@@ -87,6 +87,19 @@ body {
   text-align: center;
   font-weight: 900;
   font-size: 40px;
+}
+
+.error-button-wrapper {
+  margin: 20px 0 0 0;
+}
+
+.error-button {
+  background-color: #db9294;
+  border: 1px solid #a77576;
+}
+
+.error-button:hover {
+  background-color: #a77576;
 }
 
 .pokemon-wrapper {
