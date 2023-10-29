@@ -10,7 +10,7 @@ interface IState {
 }
 
 class ErrorBoundary extends React.Component<IProps, IState> {
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
     this.state = { hasError: false };
   }
@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component<IProps, IState> {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.log(error, info.componentStack);
   }
 

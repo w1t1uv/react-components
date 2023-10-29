@@ -1,7 +1,11 @@
 import React from 'react';
 
-class ErrorButton extends React.Component<unknown, unknown> {
-  constructor(props) {
+interface IState {
+  hasError: boolean;
+}
+
+class ErrorButton extends React.Component<unknown, IState> {
+  constructor(props: unknown) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = { hasError: false };
