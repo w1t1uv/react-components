@@ -13,6 +13,7 @@ interface IState {
   weight: number;
   searchDone: boolean;
   loading: boolean;
+  queryError: boolean;
 }
 
 export class PokemonSearch extends React.Component<unknown, IState> {
@@ -30,6 +31,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       weight: 0,
       searchDone: false,
       loading: false,
+      queryError: false,
     };
   }
 
@@ -58,6 +60,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
       weight: 0,
       searchDone: false,
       loading: false,
+      queryError: false,
     });
     if (!value) {
       localStorage.setItem('query', '');
@@ -80,6 +83,10 @@ export class PokemonSearch extends React.Component<unknown, IState> {
     try {
       const response = await fetch(`${url}/${name}`);
       if (!response.ok) {
+        this.setState((prevState) => ({
+          ...prevState,
+          queryError: true,
+        }));
         throw new Error(`Query execution error : ${response.status}`);
       }
       const data = await response.json();
@@ -92,6 +99,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
         weight: data.weight,
         searchDone: true,
         loading: false,
+        queryError: false,
       });
       localStorage.setItem('state', JSON.stringify(data));
     } catch (e) {
@@ -100,7 +108,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
   }
 
   render() {
-    const { value, searchDone, loading } = this.state;
+    const { value, searchDone, loading, queryError } = this.state;
 
     return (
       <div>
@@ -109,8 +117,9 @@ export class PokemonSearch extends React.Component<unknown, IState> {
           onValueChange={this.handleChange}
           onButtonClick={this.handleClick}
         />
-        {loading && <p className="loading">Loading</p>}
-        {searchDone && (
+        {queryError && <p className="error">There is no such thing as a Pokemon :/</p>}
+        {loading && !queryError && <p className="loading">Loading</p>}
+        {searchDone && !queryError && (
           <Pokemon
             name={this.state.name}
             height={this.state.height}
@@ -119,7 +128,7 @@ export class PokemonSearch extends React.Component<unknown, IState> {
             weight={this.state.weight}
           />
         )}
-        {!value && <AllPokemon />}
+        {!value && !queryError && <AllPokemon />}
       </div>
     );
   }
