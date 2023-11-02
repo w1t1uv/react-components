@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { urlObject } from './server';
 import { Pokemon } from './Pokemon';
 
@@ -10,26 +10,16 @@ interface pokemonData {
   weight: number;
 }
 
-interface IState {
-  allPokemon: pokemonData[];
-  isLoaded: boolean;
-}
-
 interface responsePokemon {
   name: string;
   url: string;
 }
 
-export class AllPokemon extends React.Component<unknown, IState> {
-  constructor(props: unknown) {
-    super(props);
-    this.state = {
-      allPokemon: [],
-      isLoaded: false,
-    };
-  }
+export function AllPokemon() {
+  const [allPokemon, setAllPokemon] = useState<pokemonData[]>([]);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  async componentDidMount() {
+  async function fetchPokemon() {
     const url = urlObject.url;
 
     try {
@@ -50,33 +40,30 @@ export class AllPokemon extends React.Component<unknown, IState> {
         })
       );
 
-      this.setState({
-        allPokemon: allPokemonData,
-        isLoaded: true,
-      });
+      setAllPokemon(allPokemonData);
+      setIsLoaded(true);
     } catch (e) {
       console.error(`Error: ${e}`);
     }
   }
 
-  render() {
-    const isLoading = this.state.isLoaded;
-    const pokemonList = this.state.allPokemon;
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
 
-    return (
-      <div>
-        {isLoading &&
-          pokemonList.map((pokemon) => (
-            <Pokemon
-              key={pokemon.name}
-              name={pokemon.name}
-              height={pokemon.height}
-              isDefault={pokemon.isDefault ? 'Yes' : 'No'}
-              order={pokemon.order}
-              weight={pokemon.weight}
-            />
-          ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {isLoaded &&
+        allPokemon.map((pokemon) => (
+          <Pokemon
+            key={pokemon.name}
+            name={pokemon.name}
+            height={pokemon.height}
+            isDefault={pokemon.isDefault ? 'Yes' : 'No'}
+            order={pokemon.order}
+            weight={pokemon.weight}
+          />
+        ))}
+    </div>
+  );
 }

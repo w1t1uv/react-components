@@ -1,35 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-interface IState {
-  hasError: boolean;
-}
+function ErrorButton() {
+  const [hasError, setHasError] = useState<boolean>(false);
 
-class ErrorButton extends React.Component<unknown, IState> {
-  constructor(props: unknown) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { hasError: false };
+  const handleClick = () => {
+    setHasError(true);
+  };
+
+  if (hasError) {
+    throw new Error('Something went wrong :/');
   }
 
-  handleClick() {
-    this.setState({ hasError: true });
-  }
-
-  render() {
-    const { hasError } = this.state;
-
-    if (hasError) {
-      throw new Error('Something went wrong :/');
-    }
-
-    return (
-      <div className="wrapper error-button-wrapper">
-        <button className="button error-button" onClick={this.handleClick}>
-          press for error
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className="wrapper error-button-wrapper">
+      <button className="button error-button" onClick={handleClick}>
+        press for error
+      </button>
+    </div>
+  );
 }
 
 export default ErrorButton;
