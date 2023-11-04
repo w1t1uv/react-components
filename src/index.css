@@ -77,18 +77,6 @@ body {
   background: #5e5e5e;
 }
 
-/*button styles end*/
-
-/*output section styles start*/
-
-.loading,
-.error {
-  color: #929292;
-  text-align: center;
-  font-weight: 900;
-  font-size: 40px;
-}
-
 .error-button-wrapper {
   margin: 20px 0 0 0;
 }
@@ -100,6 +88,23 @@ body {
 
 .error-button:hover {
   background-color: #a77576;
+}
+
+.pagination-button {
+  border-radius: 7px;
+  padding: 1px 13px;
+}
+
+/*button styles end*/
+
+/*output section styles start*/
+
+.loading,
+.error {
+  color: #929292;
+  text-align: center;
+  font-weight: 900;
+  font-size: 40px;
 }
 
 .pokemon-wrapper {

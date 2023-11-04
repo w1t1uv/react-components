@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { urlObject } from './server';
 import SearchBar from './SearchBar';
 import { Pokemon } from './Pokemon';
-import { AllPokemon } from './AllPokemon';
 import ErrorButton from './ErrorButton';
+import AllPokemon from './AllPokemon';
 
 export function PokemonSearch() {
   const [value, setValue] = useState<string>('');
