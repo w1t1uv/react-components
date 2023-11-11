@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Pokemon } from './Pokemon';
 import { urlObject } from './server';
+import { usePokemonContext } from './PokemonContext';
 
 interface pokemonData {
   name: string;
@@ -24,7 +25,7 @@ function AllPokemon() {
   const navigate = useNavigate();
   const url = urlObject.url;
 
-  const [allPokemonData, setAllPokemonData] = useState<pokemonData[]>([]);
+  const { allPokemon, setAllPokemon } = usePokemonContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function AllPokemon() {
           })
         );
 
-        setAllPokemonData(allPokemonData);
+        setAllPokemon(allPokemonData);
         console.log(response.data.results);
         setLoading(false);
       } catch (e) {
@@ -63,7 +64,7 @@ function AllPokemon() {
     <div className="cards">
       {loading && <p className="loading">Loading</p>}
       {!loading &&
-        allPokemonData.map((pokemon) => (
+        allPokemon.map((pokemon) => (
           <Link key={pokemon.name} to={`/details/${pokemon.name}`} className="pokemon-card">
             <Pokemon
               key={pokemon.name}
