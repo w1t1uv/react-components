@@ -1,8 +1,8 @@
 import React from 'react';
-import { PokemonSearch } from './PokemonSearch';
+import { PokemonSearch } from '../components/PokemonSearch/PokemonSearch';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import PageNotFound from './PageNotFound';
-import Details from './Details';
+import PageNotFound from '../pages/PageNotFound';
+import Details from '../components/Details/Details';
 
 function App() {
   return (

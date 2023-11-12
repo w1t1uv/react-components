@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Pokemon } from './Pokemon';
-import { urlObject } from './server';
-import { usePokemonContext } from './PokemonContext';
+import { Pokemon } from '../Pokemon/Pokemon';
+import { urlObject } from '../../server/server';
+import { usePokemonContext } from '../../context/PokemonContext';
 
 interface pokemonData {
   name: string;

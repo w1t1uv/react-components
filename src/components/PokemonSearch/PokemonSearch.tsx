@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { urlObject } from './server';
-import SearchBar from './SearchBar';
-import { Pokemon } from './Pokemon';
-import ErrorButton from './ErrorButton';
-import AllPokemon from './AllPokemon';
-import { PokemonProvider, usePokemonContext } from './PokemonContext';
+import { urlObject } from '../../server/server';
+import SearchBar from '../SearchBar/SearchBar';
+import { Pokemon } from '../Pokemon/Pokemon';
+import ErrorButton from '../ErrorBoundary/ErrorButton';
+import AllPokemon from '../AllPokemon/AllPokemon';
+import { PokemonProvider, usePokemonContext } from '../../context/PokemonContext';
 
 export function PokemonSearch() {
   const { value, setValue } = usePokemonContext();

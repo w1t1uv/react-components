@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { urlObject } from './server';
+import { urlObject } from '../../server/server';
 
 interface IPokemonData {
   name: string;
