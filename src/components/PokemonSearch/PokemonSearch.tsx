@@ -4,7 +4,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Pokemon } from '../Pokemon/Pokemon';
 import ErrorButton from '../ErrorBoundary/ErrorButton';
 import AllPokemon from '../AllPokemon/AllPokemon';
-import { PokemonProvider, usePokemonContext } from '../../context/PokemonContext';
+import { usePokemonContext } from '../../context/PokemonContext';
+import { useActions } from '../../hooks/actions';
 
 export function PokemonSearch() {
   const { value, setValue } = usePokemonContext();
@@ -16,6 +17,8 @@ export function PokemonSearch() {
   const [searchDone, setSearchDone] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [queryError, setQueryError] = useState<boolean>(false);
+
+  const { saveValue } = useActions();
 
   const handleChange = useCallback(() => {
     const input = document.getElementById('search-input') as HTMLInputElement;
