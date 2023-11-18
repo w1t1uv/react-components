@@ -1,14 +1,7 @@
 import React from 'react';
+import { IPokemonData } from '../../models/models';
 
-interface IProps {
-  name: string;
-  height: number;
-  isDefault: string;
-  order: number;
-  weight: number;
-}
-
-export function Pokemon(props: IProps) {
+export function Pokemon(props: IPokemonData) {
   return (
     <div className="wrapper pokemon-wrapper">
       <p className="property property-name">Name : {props.name}</p>

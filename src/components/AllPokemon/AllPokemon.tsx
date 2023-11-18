@@ -4,19 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Pokemon } from '../Pokemon/Pokemon';
 import { urlObject } from '../../server/server';
 import { usePokemonContext } from '../../context/PokemonContext';
-
-interface pokemonData {
-  name: string;
-  height: number;
-  isDefault: boolean;
-  order: number;
-  weight: number;
-}
-
-interface responsePokemon {
-  name: string;
-  url: string;
-}
+import { responsePokemon } from '../../models/models';
 
 function AllPokemon() {
   const location = useLocation();
@@ -44,7 +32,6 @@ function AllPokemon() {
         );
 
         setAllPokemon(allPokemonData);
-        console.log(response.data.results);
         setLoading(false);
       } catch (e) {
         console.error(`Error: ${e}`);
