@@ -23,7 +23,7 @@ function Details() {
     };
 
     fetchPokemonData();
-  }, [name]);
+  }, [name, url]);
 
   return (
     <div className="card">

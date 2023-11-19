@@ -40,7 +40,7 @@ function AllPokemon() {
     };
 
     fetchPokemonData();
-  }, [page]);
+  }, [page, setAllPokemon, url]);
 
   const onPageChange = (newPage: number) => {
     query.set('page', newPage.toString());

@@ -35,14 +35,14 @@ export function PokemonSearch() {
     if (!newValue) {
       localStorage.setItem('query', '');
     }
-  }, []);
+  }, [setValue]);
 
   const handleClick = useCallback(() => {
     const formattedValue = value.trim().toLowerCase();
     if (!formattedValue.length) return;
     saveValue(formattedValue);
     search(formattedValue);
-  }, [value]);
+  }, [value, saveValue]);
 
   async function search(name: string) {
     setLoading(true);
@@ -82,7 +82,7 @@ export function PokemonSearch() {
       setOrder(state.order);
       setWeight(state.weight);
     }
-  }, []);
+  }, [setValue]);
 
   return (
     <div>
