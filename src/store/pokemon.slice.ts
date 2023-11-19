@@ -1,20 +1,26 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { IPokemonData } from '../models/models';
 
 interface PokemonState {
   name: string;
+  allPokemon: IPokemonData[];
 }
 
 const initialState: PokemonState = {
-  name: JSON.parse(localStorage.getItem('query') ?? ''),
+  name: '',
+  allPokemon: [],
 };
 
-const pokemonSlice = createSlice({
+const pokemonSlice: Slice<PokemonState> = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {
-    saveValue(state, action: PayloadAction<string>) {
-      state.name = action.payload;
-      localStorage.setItem('query', JSON.stringify(state.name));
+    saveValue: (state: PokemonState, actions: PayloadAction<string>) => {
+      state.name = actions.payload;
+      localStorage.setItem('query', state.name);
+    },
+    setAllPokemon: (state, actions: PayloadAction<IPokemonData[]>) => {
+      state.allPokemon = actions.payload;
     },
   },
 });
