@@ -40,7 +40,7 @@ export function PokemonSearch() {
   const handleClick = useCallback(() => {
     const formattedValue = value.trim().toLowerCase();
     if (!formattedValue.length) return;
-    localStorage.setItem('query', formattedValue);
+    saveValue(formattedValue);
     search(formattedValue);
   }, [value]);
 
