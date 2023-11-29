@@ -1,18 +1,18 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
     <>
       <header className="wrapper">
-        <Link to="/" className="link">
+        <NavLink to="/" className="link">
           Home
-        </Link>
-        <Link to="/uncontrolled" className="link">
+        </NavLink>
+        <NavLink to="/uncontrolled" className="link">
           Uncontrolled
-        </Link>
-        <Link to="/controlled" className="link">
+        </NavLink>
+        <NavLink to="/controlled" className="link">
           Controlled
-        </Link>
+        </NavLink>
       </header>
       <Outlet />
     </>

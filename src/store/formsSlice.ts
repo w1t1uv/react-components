@@ -1,23 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { IForm, IFormState } from '../types';
 
-const initialState = {
-  controlledFormData: {},
-  uncontrolledFormData: {},
+const initialState: IForm = {
+  name: '',
+  age: 0,
+  email: '',
+  password: '',
+  confirmedPassword: '',
+  gender: '',
+  termsAndConditions: false,
+  image: '',
+  country: '',
 };
 
-const formsSlice = createSlice({
+const formsSlice: Slice<IFormState> = createSlice({
   name: 'forms',
-  initialState: initialState,
+  initialState: {
+    data: initialState,
+  },
   reducers: {
-    setControlledFormData(state, action) {
-      state.controlledFormData = action.payload;
-    },
-    setUncontrolledFormData(state, action) {
-      state.uncontrolledFormData = action.payload;
+    setFormData(state: IFormState, action: PayloadAction<IForm>) {
+      state.data = action.payload;
     },
   },
 });
 
-export const { setControlledFormData, setUncontrolledFormData } =
-  formsSlice.actions;
+export const { setFormData } = formsSlice.actions;
 export default formsSlice.reducer;
