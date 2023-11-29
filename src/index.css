@@ -31,3 +31,7 @@ body {
   font-weight: 900;
   text-decoration: none;
 }
+
+.active {
+  color: #3f3f3f;
+}
