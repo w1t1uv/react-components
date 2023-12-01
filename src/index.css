@@ -16,22 +16,117 @@ body {
 
 body {
   font-family: 'Exo 2', 'Lato', 'Helvetica Neue', sans-serif;
-  background: #bababa;
+  background: #cfe2f3;
 }
 
-.wrapper {
+.header-wrapper {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  padding: 20px;
 }
 
 .link {
   font-size: 15px;
-  color: #929292;
+  color: #bcbcbc;
   font-weight: 900;
   text-decoration: none;
 }
 
 .active {
-  color: #3f3f3f;
+  color: #5b5b5b;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 27px;
+  margin: 13px 0;
+  color: #bcbcbc;
+}
+
+.form-wrapper {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 13px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: #bcbcbc;
+}
+
+input {
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 3px;
+  border: 5px solid #eeeeee;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #eeeeee;
+}
+
+.gender {
+  margin-bottom: 13px;
+}
+
+.gender > label,
+.termsAndConditions > label,
+.image > label,
+.countries > label {
+  display: inline;
+}
+
+.gender > select {
+  margin: 0 0 0 15px;
+  background: #eeeeee;
+  font-weight: bold;
+  color: #bcbcbc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.termsAndConditions > input {
+  width: 30px;
+  cursor: pointer;
+}
+
+.image > input {
+  margin: 0 0 0 15px;
+  background: #cfe2f3;
+  border: none;
+  color: #bcbcbc;
+  font-weight: bold;
+  width: 250px;
+}
+
+.countries {
+  margin-bottom: 33px;
+}
+
+.countries > select {
+  margin: 0 0 0 15px;
+  background: #eeeeee;
+  font-weight: bold;
+  color: #bcbcbc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit {
+  width: 100%;
+  background-color: #bcbcbc;
+  color: #eeeeee;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: #5b5b5b;
 }
