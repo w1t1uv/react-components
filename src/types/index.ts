@@ -17,3 +17,8 @@ export interface IFormState {
 export interface ICountriesState {
   countries: string[];
 }
+
+export interface IFile {
+  size: number;
+  type: string;
+}
