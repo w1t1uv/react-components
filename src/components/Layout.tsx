@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <>
-      <header className="wrapper">
+      <header className="header-wrapper">
         <NavLink to="/" className="link">
           Home
         </NavLink>

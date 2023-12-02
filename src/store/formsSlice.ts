@@ -22,8 +22,11 @@ const formsSlice: Slice<IFormState> = createSlice({
     setFormData(state: IFormState, action: PayloadAction<IForm>) {
       state.data = action.payload;
     },
+    setImage(state: IFormState, action: PayloadAction<string>) {
+      state.data.image = action.payload;
+    },
   },
 });
 
-export const { setFormData } = formsSlice.actions;
+export const { setFormData, setImage } = formsSlice.actions;
 export default formsSlice.reducer;

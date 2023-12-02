@@ -7,4 +7,8 @@ export default configureStore({
     forms: formsReducer,
     countries: countriesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
