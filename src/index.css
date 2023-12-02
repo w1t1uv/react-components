@@ -1,3 +1,5 @@
+/*base styles start*/
+
 * {
   box-sizing: border-box;
 }
@@ -19,6 +21,10 @@ body {
   background: #cfe2f3;
 }
 
+/*base styles end*/
+
+/*navigation styles start*/
+
 .header-wrapper {
   display: flex;
   justify-content: center;
@@ -36,6 +42,10 @@ body {
 .active {
   color: #5b5b5b;
 }
+
+/*navigation styles end*/
+
+/*form styles start*/
 
 .title {
   font-weight: bold;
@@ -74,7 +84,7 @@ input {
 
 .gender > label,
 .termsAndConditions > label,
-.image > label,
+.upload-image > label,
 .countries > label {
   display: inline;
 }
@@ -94,7 +104,7 @@ input {
   cursor: pointer;
 }
 
-.image > input {
+.upload-image > input {
   margin: 0 0 0 15px;
   background: #cfe2f3;
   border: none;
@@ -130,3 +140,30 @@ input {
 .submit:hover {
   background-color: #5b5b5b;
 }
+
+/*form styles end*/
+
+/*tiles styles start*/
+
+.tiles-wrapper {
+  display: flex;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 13px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+}
+
+.property {
+  font-weight: bold;
+  color: #bcbcbc;
+}
+
+.image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-top: 21px;
+}
+
+/*tiles styles end*/
