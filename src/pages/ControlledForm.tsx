@@ -11,9 +11,10 @@ const ControlledForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
+    reset,
   } = useForm<IForm>({
-    defaultValues: {},
+    mode: 'onBlur',
     resolver: yupResolver(userSchema),
   });
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const ControlledForm = () => {
     }
     dispatch(setFormData(data));
     navigate(`/`);
+    reset();
   };
 
   return (
@@ -37,27 +39,27 @@ const ControlledForm = () => {
         <div className="name">
           <label htmlFor="name">Name</label>
           <input {...register('name')} />
-          <p>{errors.name?.message}</p>
+          <p className="error">{errors.name?.message}</p>
         </div>
         <div className="age">
           <label htmlFor="age">Age</label>
           <input type="number" {...register('age')} />
-          <p>{errors.age?.message}</p>
+          <p className="error">{errors.age?.message}</p>
         </div>
         <div className="email">
           <label htmlFor="email">Email</label>
-          <input {...register('email')} />
-          <p>{errors.email?.message}</p>
+          <input type="email" {...register('email')} />
+          <p className="error">{errors.email?.message}</p>
         </div>
         <div className="password">
           <label htmlFor="password">Password</label>
-          <input {...register('password')} />
-          <p>{errors.password?.message}</p>
+          <input type="password" {...register('password')} />
+          <p className="error">{errors.password?.message}</p>
         </div>
         <div className="confirmedPassword">
           <label htmlFor="confirmedPassword">Confirm password</label>
-          <input {...register('confirmedPassword')} />
-          <p>{errors.confirmedPassword?.message}</p>
+          <input type="password" {...register('confirmedPassword')} />
+          <p className="error">{errors.confirmedPassword?.message}</p>
         </div>
         <div className="gender">
           <label htmlFor="gender">Gender</label>
@@ -70,12 +72,12 @@ const ControlledForm = () => {
         <div className="termsAndConditions">
           <label htmlFor="termsAndConditions">Accept the T&C</label>
           <input type="checkbox" {...register('termsAndConditions')} />
-          <p>{errors.termsAndConditions?.message}</p>
+          <p className="error">{errors.termsAndConditions?.message}</p>
         </div>
         <div className="upload-image">
           <label htmlFor="image">Upload image</label>
           <input type="file" name="image" {...register('image')} />
-          <p>{errors.image?.message}</p>
+          <p className="error">{errors.image?.message}</p>
         </div>
         <div className="countries">
           <label htmlFor="country">Choose the country</label>
@@ -87,7 +89,9 @@ const ControlledForm = () => {
             ))}
           </select>
         </div>
-        <button className="submit">Submit</button>
+        <button className="submit" disabled={!isValid}>
+          Submit
+        </button>
       </form>
     </div>
   );
