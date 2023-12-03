@@ -7,16 +7,21 @@ const passwordRules =
 const supportedFormats = ['image/jpg', 'image/jpeg', 'image/png'];
 
 export const userSchema = yup.object().shape({
-  name: yup.string().matches(nameRules, { message: 'capitalize the name' }),
-  age: yup.number().positive('enter a valid age').integer(),
-  email: yup.string().email('enter a valid email'),
+  name: yup
+    .string()
+    .matches(nameRules, { message: 'capitalize the name' })
+    .required(),
+  age: yup.number().positive('enter a valid age').integer().required(),
+  email: yup.string().email('enter a valid email').required(),
   password: yup
     .string()
     .min(4)
-    .matches(passwordRules, { message: 'create a stronger password' }),
+    .matches(passwordRules, { message: 'create a stronger password' })
+    .required(),
   confirmedPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'passwords must match'),
+    .oneOf([yup.ref('password'), null], 'passwords must match')
+    .required(),
   termsAndConditions: yup.boolean().required('required'),
   image: yup
     .mixed()
