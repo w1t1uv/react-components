@@ -127,6 +127,12 @@ input {
   cursor: pointer;
 }
 
+.error {
+  color: #aa1f2f;
+  font-weight: bold;
+  margin: 7px 0 7px 3px;
+}
+
 .submit {
   width: 100%;
   background-color: #bcbcbc;
@@ -139,6 +145,10 @@ input {
 
 .submit:hover {
   background-color: #5b5b5b;
+}
+
+.submit:disabled {
+  pointer-events: none;
 }
 
 /*form styles end*/
