@@ -1,22 +1,15 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useState, useContext } from 'react';
+import React, { Dispatch, SetStateAction, createContext, useState, useContext } from 'react';
+import { IPokemonData } from '../models/models';
 
 interface PokemonProviderProps {
   children: React.ReactNode;
 }
 
-interface pokemonData {
-  name: string;
-  height: number;
-  isDefault: boolean;
-  order: number;
-  weight: number;
-}
-
 interface PokemonContextProps {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  allPokemon: pokemonData[];
-  setAllPokemon: Dispatch<SetStateAction<pokemonData[]>>;
+  allPokemon: IPokemonData[];
+  setAllPokemon: Dispatch<SetStateAction<IPokemonData[]>>;
 }
 
 const defaultContext: PokemonContextProps = {
@@ -34,7 +27,7 @@ export const usePokemonContext = () => {
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [value, setValue] = useState<string>('');
-  const [allPokemon, setAllPokemon] = useState<pokemonData[]>([]);
+  const [allPokemon, setAllPokemon] = useState<IPokemonData[]>([]);
 
   const values = {
     value,

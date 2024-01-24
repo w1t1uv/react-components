@@ -1,6 +1,6 @@
 import React from 'react';
 import { PokemonSearch } from '../components/PokemonSearch/PokemonSearch';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PageNotFound from '../pages/PageNotFound';
 import Details from '../components/Details/Details';
 

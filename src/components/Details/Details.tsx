@@ -2,14 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { urlObject } from '../../server/server';
-
-interface IPokemonData {
-  name: string;
-  height: number;
-  isDefault: string;
-  order: number;
-  weight: number;
-}
+import { IPokemonData } from '../../models/models';
 
 function Details() {
   const { name } = useParams<{ name: string }>();
@@ -22,7 +15,6 @@ function Details() {
       try {
         const response = await axios.get(`${url}/${name}`);
         setPokemonData(response.data);
-        console.log(response.data);
         setLoading(false);
       } catch (e) {
         console.error(`Error: ${e}`);
@@ -31,7 +23,7 @@ function Details() {
     };
 
     fetchPokemonData();
-  }, [name]);
+  }, [name, url]);
 
   return (
     <div className="card">
