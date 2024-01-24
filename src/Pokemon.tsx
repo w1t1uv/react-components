@@ -8,20 +8,14 @@ interface IProps {
   weight: number;
 }
 
-export class Pokemon extends React.Component<IProps, unknown> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="wrapper pokemon-wrapper">
-        <p className="property property-name">Name : {this.props.name}</p>
-        <p className="property property-height">Height : {this.props.height}</p>
-        <p className="property property-isDefault">Is Default : {this.props.isDefault}</p>
-        <p className="property property-order">Order : {this.props.order}</p>
-        <p className="property property-weight">Weight : {this.props.weight}</p>
-      </div>
-    );
-  }
+export function Pokemon(props: IProps) {
+  return (
+    <div className="wrapper pokemon-wrapper">
+      <p className="property property-name">Name : {props.name}</p>
+      <p className="property property-height">Height : {props.height}</p>
+      <p className="property property-isDefault">Is Default : {props.isDefault}</p>
+      <p className="property property-order">Order : {props.order}</p>
+      <p className="property property-weight">Weight : {props.weight}</p>
+    </div>
+  );
 }

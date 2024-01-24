@@ -77,18 +77,6 @@ body {
   background: #5e5e5e;
 }
 
-/*button styles end*/
-
-/*output section styles start*/
-
-.loading,
-.error {
-  color: #929292;
-  text-align: center;
-  font-weight: 900;
-  font-size: 40px;
-}
-
 .error-button-wrapper {
   margin: 20px 0 0 0;
 }
@@ -102,9 +90,35 @@ body {
   background-color: #a77576;
 }
 
+.pagination-button {
+  border-radius: 7px;
+  padding: 1px 13px;
+}
+
+.to-main-button {
+  text-decoration: none;
+}
+
+/*button styles end*/
+
+/*output section styles start*/
+
+.cards,
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.loading,
+.error {
+  color: #929292;
+  text-align: center;
+  font-weight: 900;
+  font-size: 40px;
+}
+
 .pokemon-wrapper {
   background: #e0e0e0;
-  width: 50%;
   margin: 20px auto;
   padding: 7px;
   border: 3px solid #929292;
@@ -125,6 +139,10 @@ body {
 .property-order,
 .property-weight {
   font-size: 25px;
+}
+
+.pokemon-card {
+  text-decoration: none;
 }
 
 /*output section styles end*/

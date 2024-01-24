@@ -6,40 +6,32 @@ interface IProps {
   onButtonClick: () => void;
 }
 
-export class SearchBar extends React.Component<IProps, unknown> {
-  constructor(props: IProps) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+function SearchBar(props: IProps) {
+  const { value, onValueChange, onButtonClick } = props;
+
+  function handleChange() {
+    onValueChange();
   }
 
-  handleChange() {
-    this.props.onValueChange();
+  function handleClick() {
+    onButtonClick();
   }
 
-  handleClick() {
-    this.props.onButtonClick();
-  }
-
-  render() {
-    const value = this.props.value;
-
-    return (
-      <div className="wrapper search-wrapper">
-        <div className="hint">For example, you can search : pikachu, wartortle, metapod, etc.</div>
-        <input
-          type="text"
-          id="search-input"
-          className="input"
-          value={value}
-          onChange={this.handleChange}
-        />
-        <button id="search-button" className="button" onClick={this.handleClick}>
-          search
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className="wrapper search-wrapper">
+      <div className="hint">For example, you can search : pikachu, wartortle, metapod, etc.</div>
+      <input
+        type="text"
+        id="search-input"
+        className="input"
+        value={value}
+        onChange={handleChange}
+      />
+      <button id="search-button" className="button" onClick={handleClick}>
+        search
+      </button>
+    </div>
+  );
 }
 
 export default SearchBar;
