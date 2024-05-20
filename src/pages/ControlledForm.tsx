@@ -13,7 +13,7 @@ const ControlledForm = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm<IForm>({
+  } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(userSchema),
   });

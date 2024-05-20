@@ -70,22 +70,22 @@ const UncontrolledForm = () => {
         <div className="name">
           <label htmlFor="name">Name</label>
           <input name="name" ref={nameRef} />
-          <p>{errors?.name}</p>
+          <p className="error">{errors?.name}</p>
         </div>
         <div className="age">
           <label htmlFor="age">Age</label>
           <input type="number" name="age" ref={ageRef} />
-          <p>{errors?.age}</p>
+          <p className="error">{errors?.age}</p>
         </div>
         <div className="email">
           <label htmlFor="email">Email</label>
           <input type="email" name="email" ref={emailRef} />
-          <p>{errors?.email}</p>
+          <p className="error">{errors?.email}</p>
         </div>
         <div className="password">
           <label htmlFor="password">Password</label>
           <input type="password" name="password" ref={passwordRef} />
-          <p>{errors?.password}</p>
+          <p className="error">{errors?.password}</p>
         </div>
         <div className="confirmedPassword">
           <label htmlFor="confirmedPassword">Confirm password</label>
@@ -94,7 +94,7 @@ const UncontrolledForm = () => {
             name="confirmedPassword"
             ref={confirmedPasswordRef}
           />
-          <p>{errors?.confirmedPassword}</p>
+          <p className="error">{errors?.confirmedPassword}</p>
         </div>
         <div className="gender">
           <label htmlFor="gender">Gender</label>
@@ -120,7 +120,7 @@ const UncontrolledForm = () => {
         </div>
         <div className="countries">
           <label htmlFor="country">Choose the country</label>
-          <select name="countries">
+          <select name="countries" ref={countriesRef}>
             {countries.map((country, index) => (
               <option key={index} value={country}>
                 {country}
